@@ -1,24 +1,29 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { webcrypto } from "node:crypto";
 import { decrypt, encrypt, generateSecureId } from "../src/utils/crypto";
 
 describe("crypto utils", () => {
   afterEach(() => {
     vi.restoreAllMocks();
+    vi.unstubAllGlobals();
   });
 
   it("applies prefix even when randomUUID is available", () => {
-    const spy = vi
-      .spyOn(globalThis.crypto, "randomUUID")
-      .mockReturnValue("123e4567-e89b-12d3-a456-426614174000");
+    const randomUUID = vi.fn(() => "123e4567-e89b-12d3-a456-426614174000");
+    vi.stubGlobal("crypto", {
+      randomUUID,
+    } as unknown as Crypto);
 
     const id = generateSecureId("pureq");
 
     expect(id).toBe("pureq-123e4567-e89b-12d3-a456-426614174000");
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(randomUUID).toHaveBeenCalledTimes(1);
   });
 
   it("round-trips encrypt/decrypt with AES-GCM key", async () => {
-    const key = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, [
+    vi.stubGlobal("crypto", webcrypto as unknown as Crypto);
+
+    const key = await globalThis.crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, [
       "encrypt",
       "decrypt",
     ]);
@@ -32,7 +37,9 @@ describe("crypto utils", () => {
   });
 
   it("throws helpful error for invalid encrypted format", async () => {
-    const key = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, [
+    vi.stubGlobal("crypto", webcrypto as unknown as Crypto);
+
+    const key = await globalThis.crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, [
       "encrypt",
       "decrypt",
     ]);

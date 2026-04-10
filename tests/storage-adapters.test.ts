@@ -1,7 +1,8 @@
 import { mkdtemp, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
-import { describe, expect, it, vi } from "vitest";
+import { webcrypto } from "node:crypto";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { EncryptedQueueStorageAdapter } from "../src/adapters/storage/encryptedStorage";
 import { IndexedDBQueueStorageAdapter } from "../src/adapters/storage/indexedDBAdapter";
 import { FileSystemQueueStorageAdapter } from "../src/node/fsAdapter";
@@ -28,9 +29,18 @@ function createMemoryStorage(initial: QueuedRequest[] = []): OfflineQueueStorage
   };
 }
 
+beforeEach(() => {
+  vi.stubGlobal("crypto", webcrypto as unknown as Crypto);
+});
+
+afterEach(() => {
+  vi.restoreAllMocks();
+  vi.unstubAllGlobals();
+});
+
 describe("EncryptedQueueStorageAdapter", () => {
   it("encrypts on push and decrypts on getAll", async () => {
-    const key = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, [
+    const key = await globalThis.crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, [
       "encrypt",
       "decrypt",
     ]);
@@ -53,7 +63,7 @@ describe("EncryptedQueueStorageAdapter", () => {
 
   it("throws aggregate error when one or more entries fail decryption", async () => {
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
-    const key = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, [
+    const key = await globalThis.crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, [
       "encrypt",
       "decrypt",
     ]);
