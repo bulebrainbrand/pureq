@@ -6,7 +6,8 @@
  */
 export function generateSecureId(prefix?: string): string {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    return crypto.randomUUID();
+    const value = crypto.randomUUID();
+    return prefix ? `${prefix}-${value}` : value;
   }
 
   if (typeof crypto !== "undefined" && typeof crypto.getRandomValues === "function") {

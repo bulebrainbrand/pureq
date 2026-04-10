@@ -1121,7 +1121,12 @@ pureq takes a defense-in-depth approach to transport layer security:
 ```bash
 npm run typecheck      # type checking
 npm test               # all tests
-npm run test:ci        # unit + integration + contract + stress + typecheck
+npm run test:unit      # lightweight unit tests (heavy load tests excluded)
+npm run test:stress    # baseline stress test
+npm run test:heavy     # heavy load + shock + chaos + invariant-fuzz tests (nightly-recommended)
+npm run test:nightly   # alias of test:heavy
+npm run test:ci        # lightweight CI: unit + integration + contract + stress + typecheck
+npm run test:ci:full   # CI + heavy tests
 npm run test:browser   # browser runtime smoke test
 npm run test:edge      # edge runtime smoke test
 npm run build          # production build

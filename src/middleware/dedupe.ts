@@ -38,9 +38,16 @@ export function dedupe(options: DedupeOptions = {}): Middleware {
       return next(req);
     }
 
-    const key =
-      options.keyBuilder?.(req) ??
-      defaultKeyBuilder(req, options.includeHeaders ?? false, options.includeBody ?? false);
+    let key: string;
+    try {
+      key =
+        options.keyBuilder?.(req) ??
+        defaultKeyBuilder(req, options.includeHeaders ?? false, options.includeBody ?? false);
+    } catch {
+      // If signature generation fails (e.g., circular body),
+      // safely bypass dedupe and execute request normally.
+      return next(req);
+    }
 
     const existing = inflight.get(key);
     if (existing) {
