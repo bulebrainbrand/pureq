@@ -1,6 +1,6 @@
 {
   "name": "@pureq/pureq",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Functional, immutable, and type-safe HTTP client layer with middleware composition.",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
@@ -38,7 +38,8 @@
     "middleware",
     "retry",
     "circuit-breaker",
-    "typescript"
+    "typescript",
+    "security"
   ],
   "author": "shiro-shihi",
   "license": "MIT",
