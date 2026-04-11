@@ -5,7 +5,7 @@ This matrix defines the currently validated runtime contract for pureq.
 ## Core Runtime Support
 
 | Runtime | Status | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Modern Browsers (Fetch API) | Supported | Requires global fetch, AbortController, URL, and Response |
 | Node.js 18+ | Supported | Uses built-in fetch/undici |
 | Node.js 16 and older | Not supported by default | Requires a fetch polyfill and extra setup |
@@ -15,7 +15,7 @@ This matrix defines the currently validated runtime contract for pureq.
 ## Feature-Level Contract
 
 | Feature | Browser | Node 18+ | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | createClient / middleware compose | Yes | Yes | Same API contract |
 | retry middleware | Yes | Yes | Exponential backoff and onRetry callback |
 | timeout + abort | Yes | Yes | AbortSignal and timeout integration |

@@ -1,43 +1,45 @@
-# Benchmark Methodology and Baseline
+# Benchmark Methodology and Baselines
 
-This document defines how to run pureq benchmarks and tracks baseline throughput/latency.
+This document defines the benchmarking procedures for **pureq** and tracks baseline performance metrics to ensure zero regressions in transport-layer overhead.
 
-## 1. Command
+## 1. Running Benchmarks
+
+To execute the standard benchmark suite, run the following command from the project root:
 
 ```bash
 npm run benchmark
 ```
 
-This command runs [scripts/benchmark.ts](../scripts/benchmark.ts).
+This command executes the [scripts/benchmark.ts](../scripts/benchmark.ts) script using the project's current toolchain.
 
 ## 2. Benchmark Scenarios
 
-- `baseline:getResult`
-- `resilient-stack:getResult` (`dedupe + retry + circuitBreaker`)
-- `baseline:getJson`
+The suite currently measures three primary scenarios to evaluate different layers of the library:
 
-The benchmark uses an in-memory adapter (no real network) to isolate transport-layer overhead.
+- **baseline:getResult**: Measures the raw overhead of the client and base execution logic.
+- **resilient-stack:getResult**: Measures a realistic production stack including `dedupe()`, `retry()`, and `circuitBreaker()`.
+- **baseline:getJson**: Measures text-to-JSON parsing overhead combined with the base request logic.
+
+All benchmarks use an in-process memory adapter (no network calls) to exclusively measure the library's internal computational cost.
 
 ## 3. Baseline Report (2026-04-10)
 
-Environment:
+### Environment
 
-- Local development machine (Windows)
-- Node.js runtime from current workspace toolchain
+- Runtime: Node.js (Latest stable)
+- OS: Windows 11
+- Methodology: 5,000 warm-up iterations followed by 5,000 measured iterations.
 
-Latest output:
+### Latest Results
 
-```text
-pureq benchmark results
-iterations per scenario: 5000
+| Scenario | Operations/sec | p50 Latency | p95 Latency |
+| --- | --- | --- | --- |
+| baseline:getResult | 58,826 | 0.012 ms | 0.030 ms |
+| resilient-stack:getResult | 22,282 | 0.034 ms | 0.071 ms |
+| baseline:getJson | 27,826 | 0.028 ms | 0.066 ms |
 
-baseline:getResult           | ops/s=  58826 | p50=  0.012ms | p95=  0.030ms
-resilient-stack:getResult    | ops/s=  22282 | p50=  0.034ms | p95=  0.071ms
-baseline:getJson             | ops/s=  27826 | p50=  0.028ms | p95=  0.066ms
-```
+## 4. Operational Notes
 
-## 4. Notes
-
-- Results are mainly useful for regression detection over time.
-- Compare against previous reports rather than treating these as universal absolute numbers.
-- For release evaluation, run benchmarks in CI or a fixed benchmark environment.
+- **Regression Detection**: These metrics are primarily used for regression detection. Any architectural change that significantly lowers `ops/s` or increases `p95` latency must be justified.
+- **Relative Comparison**: Performance numbers are hardware-dependent. Always compare against a previous local run on the same machine rather than treating these as universal constants.
+- **CI Validation**: For release-grade evaluation, benchmarks should be run in a dedicated CI environment with stable CPU availability.
