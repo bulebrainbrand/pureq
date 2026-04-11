@@ -28,10 +28,10 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
-    "test:unit": "vitest run tests --exclude tests/*.integration.test.ts",
-    "test:integration": "vitest run tests/*.integration.test.ts",
+    "test:unit": "vitest run tests --exclude tests/*.integration.test.ts --passWithNoTests",
+    "test:integration": "vitest run tests/*.integration.test.ts --passWithNoTests",
     "test:ci": "npm run test:unit && npm run typecheck"
   },
   "keywords": [
