@@ -9,8 +9,10 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [18, 20, 22]
+        # Vite 7 in the current toolchain requires Node >= 20.19.
+        node-version: [20, 22]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
