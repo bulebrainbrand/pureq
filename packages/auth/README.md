@@ -118,6 +118,17 @@ For the shortest implementation path, start from createAuthStarter.
 
 ```ts
 import { createAuthStarter, createInMemoryAdapter, credentialsProvider } from "@pureq/auth";
+import { verify } from "argon2";
+
+async function verifyPassword(email: string, password: string): Promise<{ id: string; email: string } | null> {
+  const user = await db.user.findUnique({ where: { email } });
+  if (!user) {
+    return null;
+  }
+
+  const ok = await verify(user.passwordHash, password);
+  return ok ? { id: user.id, email: user.email } : null;
+}
 
 const starter = await createAuthStarter({
   security: { mode: "ssr-bff" },
@@ -125,10 +136,7 @@ const starter = await createAuthStarter({
   providers: [
     credentialsProvider({
       authorize: async (credentials) => {
-        if (credentials.username === "alice" && credentials.password === "secret") {
-          return { id: "alice", email: "alice@example.com" };
-        }
-        return null;
+        return verifyPassword(credentials.username, credentials.password);
       },
     }),
   ],
@@ -221,6 +229,13 @@ Versioned SQL templates are included in:
 - revocation guard for jti/sid/sub invalidation
 - encrypted token storage
 - broadcast sync for multi-tab state propagation
+
+### Encryption key management
+
+- `createAuthEncryption(secret)` requires at least 256-bit key material (32+ bytes).
+- Keep secrets in environment variables or managed secret stores (Vercel / AWS SSM / Doppler).
+- Plan periodic key rotation in operations; current encrypted payload compatibility is single-key.
+- Default PBKDF2 iterations is `100_000`; for password-derived secrets, consider `600_000+`.
 
 ### Runtime-mode defaults
 

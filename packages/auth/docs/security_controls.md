@@ -41,6 +41,17 @@ const guard = withRevocationGuard({
 - Prefer short-lived access tokens and use revocation for incident response and logout propagation.
 - Use revocation by `sid` for session invalidation and by `jti` for individual token invalidation.
 - Pair CSRF protection with cookie-based auth flows or any state-changing route that accepts browser-sent credentials.
+- Manage encryption keys with high entropy (>= 256-bit), using environment variables or secret managers.
+- Rotate encryption keys on a regular schedule; current encrypted payload compatibility is single-key.
+- `createAuthEncryption` defaults to PBKDF2 `100_000` iterations. For password-derived secrets, consider `600_000+`.
+
+## Credentials Provider Password Handling
+
+`credentialsProvider` delegates password verification to your `authorize` function.
+
+- Use `argon2`, `bcrypt`, or `scrypt` hash verification.
+- Never compare plaintext password strings directly.
+- Keep password hashes and pepper/secrets outside application code (DB + managed secret store).
 
 ## Automatic vs Opt-In Security Behavior
 

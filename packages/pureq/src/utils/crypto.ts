@@ -23,6 +23,15 @@ export function generateSecureId(prefix?: string): string {
 }
 
 function uint8ArrayToBase64(bytes: Uint8Array): string {
+  const bufferCtor = (globalThis as { Buffer?: { from(value: Uint8Array): { toString(encoding: string): string } } }).Buffer;
+  if (typeof btoa !== "function" && bufferCtor) {
+    return bufferCtor.from(bytes).toString("base64");
+  }
+
+  if (typeof btoa !== "function") {
+    throw new Error("pureq: base64 encoder is unavailable in this runtime");
+  }
+
   const chunkSize = 0x8000;
   let binary = "";
 
@@ -32,6 +41,20 @@ function uint8ArrayToBase64(bytes: Uint8Array): string {
   }
 
   return btoa(binary);
+}
+
+function base64ToBytes(value: string): Uint8Array {
+  if (typeof atob === "function") {
+    const raw = atob(value);
+    return Uint8Array.from(raw, (char) => char.charCodeAt(0));
+  }
+
+  const bufferCtor = (globalThis as { Buffer?: { from(value: string, encoding: string): { values(): Iterable<number> } } }).Buffer;
+  if (bufferCtor) {
+    return Uint8Array.from(bufferCtor.from(value, "base64").values());
+  }
+
+  throw new Error("pureq: base64 decoder is unavailable in this runtime");
 }
 
 /**
@@ -64,23 +87,18 @@ export async function decrypt(encryptedData: string, key: CryptoKey): Promise<st
     throw new Error("pureq: invalid encrypted data format");
   }
 
-  let ivRaw: string;
-  let cipherRaw: string;
   try {
-    ivRaw = atob(ivBase64);
-    cipherRaw = atob(cipherBase64);
+    const iv = new Uint8Array(base64ToBytes(ivBase64));
+    const ciphertext = new Uint8Array(base64ToBytes(cipherBase64));
+
+    const decrypted = await crypto.subtle.decrypt(
+      { name: "AES-GCM", iv },
+      key,
+      ciphertext
+    );
+
+    return new TextDecoder().decode(decrypted);
   } catch {
     throw new Error("pureq: invalid encrypted payload (base64 decode failed)");
   }
-
-  const iv = Uint8Array.from(ivRaw, (c) => c.charCodeAt(0));
-  const ciphertext = Uint8Array.from(cipherRaw, (c) => c.charCodeAt(0));
-
-  const decrypted = await crypto.subtle.decrypt(
-    { name: "AES-GCM", iv },
-    key,
-    ciphertext
-  );
-
-  return new TextDecoder().decode(decrypted);
 }

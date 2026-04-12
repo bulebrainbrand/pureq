@@ -658,6 +658,10 @@ export interface AuthEncryption {
 	decrypt<T = unknown>(token: string): Promise<T>;
 }
 
+export interface AuthEncryptionOptions {
+	readonly pbkdf2Iterations?: number;
+}
+
 // ────────────────────────────────────────────────────────────────────────────
 // Authorization / RBAC (FEAT-M1)
 // ────────────────────────────────────────────────────────────────────────────

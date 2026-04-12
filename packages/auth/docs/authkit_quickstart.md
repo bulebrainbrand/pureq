@@ -12,6 +12,17 @@ It bundles:
 
 ```ts
 import { createAuthKit, credentialsProvider, createInMemoryAdapter } from "@pureq/auth";
+import { verify } from "argon2";
+
+async function verifyPassword(username: string, password: string) {
+  const user = await db.user.findUnique({ where: { username } });
+  if (!user) {
+    return null;
+  }
+
+  const ok = await verify(user.passwordHash, password);
+  return ok ? { id: user.id, email: user.email } : null;
+}
 
 const authKit = createAuthKit({
   adapter: createInMemoryAdapter(),
@@ -21,15 +32,14 @@ const authKit = createAuthKit({
   providers: [
     credentialsProvider({
       authorize: async (credentials) => {
-        if (credentials.username === "alice" && credentials.password === "secret") {
-          return { id: "alice", email: "alice@example.com" };
-        }
-        return null;
+        return verifyPassword(credentials.username, credentials.password);
       },
     }),
   ],
 });
 ```
+
+Use `argon2`, `bcrypt`, or `scrypt` for password verification. Avoid plaintext string comparison in `authorize`.
 
 ## Route wiring
 

@@ -74,6 +74,7 @@ export type {
 	AuthEmailProviderOptions,
 	AuthCallbacks,
 	AuthEncryption,
+	AuthEncryptionOptions,
 	AuthAuthorization,
 	AuthAuthorizationOptions,
 	AuthDebugLogger,

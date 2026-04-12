@@ -36,6 +36,17 @@ import {
   createInMemoryAdapter,
   credentialsProvider,
 } from "@pureq/auth";
+import { verify } from "argon2";
+
+async function verifyPassword(email: string, password: string) {
+  const user = await db.user.findUnique({ where: { email } });
+  if (!user) {
+    return null;
+  }
+
+  const ok = await verify(user.passwordHash, password);
+  return ok ? { id: user.id, email: user.email, name: user.name } : null;
+}
 
 const kit = createAuthKit({
   security: { mode: "ssr-bff" },
@@ -43,10 +54,7 @@ const kit = createAuthKit({
   providers: [
     credentialsProvider({
       authorize: async (credentials) => {
-        if (credentials.email === "alice@example.com" && credentials.password === "secret") {
-          return { id: "alice", email: "alice@example.com", name: "Alice" };
-        }
-        return null;
+        return verifyPassword(credentials.email, credentials.password);
       },
     }),
   ],
