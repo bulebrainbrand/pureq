@@ -16,8 +16,7 @@
     "exactOptionalPropertyTypes": true,
     "verbatimModuleSyntax": true,
     "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "ignoreDeprecations": "6.0"
+    "moduleDetection": "force"
   },
   "include": [],
   "references": [

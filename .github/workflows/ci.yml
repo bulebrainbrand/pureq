@@ -92,3 +92,26 @@ jobs:
 
       - name: Edge runtime smoke
         run: pnpm test:edge
+
+  authkit-golden-path:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: AuthKit golden path smoke
+        run: pnpm --filter @pureq/auth exec vitest run tests/auth-kit.test.ts tests/auth-kit-security.test.ts tests/framework-packs.test.ts tests/core-auth-handlers.test.ts

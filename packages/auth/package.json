@@ -1,6 +1,6 @@
 {
   "name": "@pureq/auth",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Authentication and token management middleware for pureq",
   "type": "module",
   "main": "./dist/index.js",
@@ -11,6 +11,21 @@
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
+    "./middleware": {
+      "types": "./dist/middleware/index.d.ts",
+      "import": "./dist/middleware/index.js",
+      "default": "./dist/middleware/index.js"
+    },
+    "./storage": {
+      "types": "./dist/storage/index.d.ts",
+      "import": "./dist/storage/index.js",
+      "default": "./dist/storage/index.js"
+    },
+    "./session": {
+      "types": "./dist/session/index.d.ts",
+      "import": "./dist/session/index.js",
+      "default": "./dist/session/index.js"
+    },
     "./jwt": {
       "types": "./dist/jwt/index.d.ts",
       "import": "./dist/jwt/index.js",
@@ -20,6 +35,91 @@
       "types": "./dist/oidc/index.d.ts",
       "import": "./dist/oidc/index.js",
       "default": "./dist/oidc/index.js"
+    },
+    "./csrf": {
+      "types": "./dist/csrf/index.d.ts",
+      "import": "./dist/csrf/index.js",
+      "default": "./dist/csrf/index.js"
+    },
+    "./revocation": {
+      "types": "./dist/revocation/index.d.ts",
+      "import": "./dist/revocation/index.js",
+      "default": "./dist/revocation/index.js"
+    },
+    "./events": {
+      "types": "./dist/events/index.d.ts",
+      "import": "./dist/events/index.js",
+      "default": "./dist/events/index.js"
+    },
+    "./bridge": {
+      "types": "./dist/bridge/index.d.ts",
+      "import": "./dist/bridge/index.js",
+      "default": "./dist/bridge/index.js"
+    },
+    "./adapters": {
+      "types": "./dist/adapters/index.d.ts",
+      "import": "./dist/adapters/index.js",
+      "default": "./dist/adapters/index.js"
+    },
+    "./framework": {
+      "types": "./dist/framework/index.d.ts",
+      "import": "./dist/framework/index.js",
+      "default": "./dist/framework/index.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.js",
+      "default": "./dist/hooks/index.js"
+    },
+    "./templates": {
+      "types": "./dist/templates/index.d.ts",
+      "import": "./dist/templates/index.js",
+      "default": "./dist/templates/index.js"
+    },
+    "./presets": {
+      "types": "./dist/presets/index.d.ts",
+      "import": "./dist/presets/index.js",
+      "default": "./dist/presets/index.js"
+    },
+    "./migration": {
+      "types": "./dist/migration/index.d.ts",
+      "import": "./dist/migration/index.js",
+      "default": "./dist/migration/index.js"
+    },
+    "./adapter": {
+      "types": "./dist/adapter/index.d.ts",
+      "import": "./dist/adapter/index.js",
+      "default": "./dist/adapter/index.js"
+    },
+    "./providers": {
+      "types": "./dist/providers/index.d.ts",
+      "import": "./dist/providers/index.js",
+      "default": "./dist/providers/index.js"
+    },
+    "./callbacks": {
+      "types": "./dist/callbacks/index.d.ts",
+      "import": "./dist/callbacks/index.js",
+      "default": "./dist/callbacks/index.js"
+    },
+    "./encryption": {
+      "types": "./dist/encryption/index.d.ts",
+      "import": "./dist/encryption/index.js",
+      "default": "./dist/encryption/index.js"
+    },
+    "./authorization": {
+      "types": "./dist/authorization/index.d.ts",
+      "import": "./dist/authorization/index.js",
+      "default": "./dist/authorization/index.js"
+    },
+    "./debug": {
+      "types": "./dist/debug/index.d.ts",
+      "import": "./dist/debug/index.js",
+      "default": "./dist/debug/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.js",
+      "default": "./dist/core/index.js"
     }
   },
   "files": [
@@ -29,10 +129,14 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run --passWithNoTests",
+    "test:redteam": "vitest run tests/auth-breaker.redteam.test.ts",
     "test:watch": "vitest",
+    "test:heavy": "vitest run tests/auth-assault.heavy.test.ts tests/auth-chaos.heavy.test.ts tests/auth-defense-saturation.heavy.test.ts tests/auth-bank-gafam.assault.heavy.test.ts tests/auth-adversarial-zero-day.heavy.test.ts",
+    "test:assault": "pnpm run test:contract && pnpm run test:heavy && pnpm run test:ci",
     "test:unit": "vitest run tests --exclude tests/*.integration.test.ts --passWithNoTests",
-    "test:integration": "vitest run tests/*.integration.test.ts --passWithNoTests",
-    "test:ci": "npm run test:unit && npm run typecheck"
+    "test:integration": "vitest run integration.test.ts --passWithNoTests",
+    "test:contract": "vitest run tests/storage-contract.test.ts tests/*contract*.integration.test.ts --passWithNoTests",
+    "test:ci": "pnpm run test:unit && pnpm run test:integration && pnpm run typecheck"
   },
   "keywords": [
     "http",
