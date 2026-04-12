@@ -15,7 +15,7 @@ function getHeader(headers: RequestConfig["headers"], name: string): string | nu
   const normalized = name.toLowerCase();
   for (const [key, value] of Object.entries(headers)) {
     if (key.toLowerCase() === normalized) {
-      return value;
+      return typeof value === "string" ? value : null;
     }
   }
 

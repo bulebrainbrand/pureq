@@ -102,8 +102,8 @@ describe("auth integration flows", () => {
       redirectUri: "https://app.example.com/callback",
     });
 
-    const authUrl = await flow.getAuthorizationUrl({ state: "state-1" });
-    const parsedAuthUrl = new URL(authUrl);
+    const auth = await flow.getAuthorizationUrl({ state: "state-1" });
+    const parsedAuthUrl = new URL(auth.url);
     expect(parsedAuthUrl.searchParams.get("audience")).toBe("api://integration");
 
     const state = parsedAuthUrl.searchParams.get("state") ?? "";
@@ -111,7 +111,11 @@ describe("auth integration flows", () => {
     const callback = parseOIDCCallbackParams(callbackUrl, state);
     expect(callback.code).toBe("code-1");
 
-    const tokenResponse = await flow.exchangeCallback(callbackUrl, { expectedState: state });
+    const tokenResponse = await flow.exchangeCallback(callbackUrl, {
+      expectedState: state,
+      codeVerifier: auth.codeVerifier,
+      expectedNonce: auth.nonce,
+    });
 
     expect(tokenResponse.accessToken).toBe("new-access-token");
     expect(tokenResponse.refreshToken).toBe("new-refresh-token");
@@ -122,8 +126,17 @@ describe("auth integration flows", () => {
     const channelName = "pureq:test:integration:logout";
     const storeA = authMemoryStore();
     const storeB = authMemoryStore();
-    const managerA = createAuthSessionManager(storeA, { broadcastChannel: channelName, instanceId: "a" });
-    const managerB = createAuthSessionManager(storeB, { broadcastChannel: channelName, instanceId: "b" });
+    const sharedSecret = "integration-broadcast-secret";
+    const managerA = createAuthSessionManager(storeA, {
+      broadcastChannel: channelName,
+      instanceId: "a",
+      broadcastSecret: sharedSecret,
+    });
+    const managerB = createAuthSessionManager(storeB, {
+      broadcastChannel: channelName,
+      instanceId: "b",
+      broadcastSecret: sharedSecret,
+    });
 
     await managerA.setTokens({ accessToken: "token-a", refreshToken: "refresh-a" });
     await managerB.setTokens({ accessToken: "token-b", refreshToken: "refresh-b" });

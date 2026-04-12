@@ -117,14 +117,18 @@ describe("oidc boundary integration", () => {
       redirectUri: "https://app.example.com/callback",
     });
 
-    const authUrl = await flow.getAuthorizationUrl({ state: "state-1" });
-    const parsed = new URL(authUrl);
+    const auth = await flow.getAuthorizationUrl({ state: "state-1" });
+    const parsed = new URL(auth.url);
     expect(parsed.searchParams.get("audience")).toBe("api://integration");
 
     const callbackState = parsed.searchParams.get("state") ?? "";
     const token = await flow.exchangeCallback(
       `https://app.example.com/callback?code=code-1&state=${callbackState}`,
-      { expectedState: callbackState }
+      {
+        expectedState: callbackState,
+        codeVerifier: auth.codeVerifier,
+        expectedNonce: auth.nonce,
+      }
     );
 
     expect(token.accessToken).toBe("access-ok");

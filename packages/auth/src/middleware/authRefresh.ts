@@ -12,7 +12,7 @@ function readHeader(headers: RequestConfig["headers"], name: string): string | n
   const normalized = name.toLowerCase();
   for (const [key, value] of Object.entries(headers)) {
     if (key.toLowerCase() === normalized) {
-      return value;
+      return typeof value === "string" ? value : null;
     }
   }
 

@@ -3,16 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "rootDir": "src",
-    "outDir": "dist",
-    "ignoreDeprecations": "6.0",
-    "baseUrl": ".",
-    "paths": {
-      "@pureq/pureq": ["../pureq/src"],
-      "@pureq/pureq/*": ["../pureq/src/*"]
-    }
+    "outDir": "dist"
   },
-  "include": ["src"],
-  "references": [
-    { "path": "../pureq" }
-  ]
+  "include": ["src"]
 }
