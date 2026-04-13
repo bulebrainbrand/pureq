@@ -8,9 +8,9 @@ import type {
   AuthTokenRotationPolicy,
   ReactUseSyncExternalStore,
   VueRuntimeBindings,
-} from "../shared";
-import { createReactAuthHooks, createAuthSessionStore, createVueAuthSessionComposable } from "../hooks";
-import { createAuth } from "./index";
+} from "../shared/index.js";
+import { createReactAuthHooks, createAuthSessionStore, createVueAuthSessionComposable } from "../hooks/index.js";
+import { createAuth } from "./index.js";
 
 function mergeSessionStoreOptions(
   base: AuthSessionStoreOptions | undefined,
@@ -186,4 +186,4 @@ export function createAuthKit(config: AuthKitConfig = {}): AuthKit {
   };
 }
 
-export type { AuthKit, AuthKitConfig } from "../shared";
+export type { AuthKit, AuthKitConfig } from "../shared/index.js";

@@ -1,8 +1,8 @@
 import type { Middleware, RequestConfig } from "@pureq/pureq";
 import { markPolicyMiddleware } from "@pureq/pureq";
-import type { AuthBasicOptions } from "../shared";
-import { base64Encode, resolveStringValue, createAuthError } from "../shared";
-import { mergeHeaders } from "./common";
+import type { AuthBasicOptions } from "../shared/index.js";
+import { base64Encode, resolveStringValue, createAuthError } from "../shared/index.js";
+import { mergeHeaders } from "./common.js";
 
 function hasUnsafeChars(value: string): boolean {
   return /[\r\n\0]/u.test(value);

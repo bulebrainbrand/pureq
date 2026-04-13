@@ -1,7 +1,7 @@
-export { authBearer } from "./authBearer";
-export { authRefresh } from "./authRefresh";
-export { authSession } from "./authSession";
-export { withTokenLifecycle } from "./tokenLifecycle";
-export { authBasic } from "./authBasic";
-export { authCustom } from "./authCustom";
-export { withBroadcastSync } from "./broadcastSync";
+export { authBearer } from "./authBearer.js";
+export { authRefresh } from "./authRefresh.js";
+export { authSession } from "./authSession.js";
+export { withTokenLifecycle } from "./tokenLifecycle.js";
+export { authBasic } from "./authBasic.js";
+export { authCustom } from "./authCustom.js";
+export { withBroadcastSync } from "./broadcastSync.js";

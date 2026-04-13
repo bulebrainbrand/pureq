@@ -1,5 +1,5 @@
-import { createAuthError } from "../shared";
-import type { OIDCProviderDefinition } from "../shared";
+import { createAuthError } from "../shared/index.js";
+import type { OIDCProviderDefinition } from "../shared/index.js";
 
 function assertNonEmpty(value: string, label: string): string {
   const normalized = value.trim();

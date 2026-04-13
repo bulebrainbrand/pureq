@@ -4,7 +4,7 @@ import type {
   AuthPersistedSession,
   AuthUser,
   AuthVerificationToken,
-} from "../shared";
+} from "../shared/index.js";
 
 type SqlValue = string | number | boolean | Date | null;
 type SqlRow = Readonly<Record<string, unknown>>;

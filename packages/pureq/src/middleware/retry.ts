@@ -1,7 +1,7 @@
-import type { Middleware, RequestConfig } from "../types/http";
-import type { HttpResponse } from "../response/response";
-import { markPolicyMiddleware } from "../policy/guardrails";
-import { appendPolicyTrace } from "../utils/policyTrace";
+import type { Middleware, RequestConfig } from "../types/http.js";
+import type { HttpResponse } from "../response/response.js";
+import { markPolicyMiddleware } from "../policy/guardrails.js";
+import { appendPolicyTrace } from "../utils/policyTrace.js";
 
 export interface RetryOptions {
   readonly maxRetries: number;

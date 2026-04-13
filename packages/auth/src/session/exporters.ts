@@ -1,4 +1,4 @@
-import type { AuthSessionEvent, AuthSessionEventAudit } from "../shared";
+import type { AuthSessionEvent, AuthSessionEventAudit } from "../shared/index.js";
 
 export interface SessionEventExporterOptions {
   readonly sink: (events: readonly AuthSessionEvent[]) => void | Promise<void>;

@@ -1,8 +1,8 @@
-import type { Middleware, RequestConfig } from "../types/http";
-import type { HttpResponse } from "../response/response";
-import { markPolicyMiddleware } from "../policy/guardrails";
-import { HttpResponse as PureqHttpResponse } from "../response/response";
-import { appendPolicyTrace } from "../utils/policyTrace";
+import type { Middleware, RequestConfig } from "../types/http.js";
+import type { HttpResponse } from "../response/response.js";
+import { markPolicyMiddleware } from "../policy/guardrails.js";
+import { HttpResponse as PureqHttpResponse } from "../response/response.js";
+import { appendPolicyTrace } from "../utils/policyTrace.js";
 
 export interface OfflineQueueHooks {
   readonly onQueued?: (event: {

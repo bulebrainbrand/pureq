@@ -1,8 +1,8 @@
 import type { Middleware, RequestConfig } from "@pureq/pureq";
 import { markPolicyMiddleware } from "@pureq/pureq";
-import type { AuthRefreshOptions } from "../shared";
-import { buildAuthError } from "../shared";
-import { mergeHeaders } from "./common";
+import type { AuthRefreshOptions } from "../shared/index.js";
+import { buildAuthError } from "../shared/index.js";
+import { mergeHeaders } from "./common.js";
 
 function readHeader(headers: RequestConfig["headers"], name: string): string | null {
   if (!headers) {

@@ -1,8 +1,8 @@
 import type { Middleware, RequestConfig } from "@pureq/pureq";
 import { markPolicyMiddleware } from "@pureq/pureq";
-import type { AuthSessionMiddlewareOptions, AuthSessionState } from "../shared";
-import { buildAuthError } from "../shared";
-import { mergeHeaders } from "./common";
+import type { AuthSessionMiddlewareOptions, AuthSessionState } from "../shared/index.js";
+import { buildAuthError } from "../shared/index.js";
+import { mergeHeaders } from "./common.js";
 
 async function ensureAuthState(options: AuthSessionMiddlewareOptions): Promise<AuthSessionState> {
   try {

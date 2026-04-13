@@ -11,6 +11,7 @@
     "build": "pnpm --recursive run build",
     "build:pureq": "pnpm --filter @pureq/pureq build",
     "build:auth": "pnpm --filter @pureq/auth build",
+    "build:validation": "pnpm --filter @pureq/validation build",
     "typecheck": "pnpm --recursive run typecheck",
     "test": "pnpm --recursive run test",
     "test:unit": "pnpm --recursive run test:unit",

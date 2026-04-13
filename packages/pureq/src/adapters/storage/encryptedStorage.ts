@@ -1,5 +1,5 @@
-import type { OfflineQueueStorageAdapter, QueuedRequest } from "../../middleware/offlineQueue";
-import { encrypt, decrypt } from "../../utils/crypto";
+import type { OfflineQueueStorageAdapter, QueuedRequest } from "../../middleware/offlineQueue.js";
+import { encrypt, decrypt } from "../../utils/crypto.js";
 
 interface EncryptedQueuedRequest extends Omit<QueuedRequest, "req"> {
   readonly req: string;

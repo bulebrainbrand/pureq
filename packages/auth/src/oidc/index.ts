@@ -8,10 +8,10 @@ import type {
   OIDCProviderDefinition,
   OIDCTokenEndpointAuthMethod,
   TokenResponse,
-} from "../shared";
-import { base64UrlEncode, base64Encode, createAuthError } from "../shared";
-import { decodeJwt } from "../jwt";
-import { oidcProviders } from "./providers";
+} from "../shared/index.js";
+import { base64UrlEncode, base64Encode, createAuthError } from "../shared/index.js";
+import { decodeJwt } from "../jwt/index.js";
+import { oidcProviders } from "./providers.js";
 
 interface OIDCMetadata {
   readonly authorization_endpoint: string;

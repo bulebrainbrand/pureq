@@ -1,4 +1,4 @@
-import type { BodySerializer } from "../types/http";
+import type { BodySerializer } from "../types/http.js";
 
 function isBodyInitLike(value: unknown): value is BodyInit {
   return (

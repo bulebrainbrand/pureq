@@ -1,8 +1,8 @@
 import type { Middleware, RequestConfig } from "@pureq/pureq";
 import { markPolicyMiddleware } from "@pureq/pureq";
 import { generateSecureId } from "@pureq/pureq";
-import type { AuthCsrfOptions, AuthCsrfProtection } from "../shared";
-import { createAuthError } from "../shared";
+import type { AuthCsrfOptions, AuthCsrfProtection } from "../shared/index.js";
+import { createAuthError } from "../shared/index.js";
 
 const DEFAULT_SAFE_METHODS: readonly RequestConfig["method"][] = ["GET", "HEAD", "OPTIONS"];
 const MAX_CSRF_TOKEN_LENGTH = 2048;

@@ -1,4 +1,4 @@
-import type { HttpResponse } from "../response/response";
+import type { HttpResponse } from "../response/response.js";
 
 export type Ok<T> = {
   readonly ok: true;

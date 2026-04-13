@@ -1,4 +1,4 @@
-import type { HttpAdapter } from "../types/http";
+import type { HttpAdapter } from "../types/http.js";
 
 export interface AdapterStartEvent {
   readonly url: string;

@@ -1,4 +1,4 @@
-import type { TransportEvent } from "../types/events";
+import type { TransportEvent } from "../types/events.js";
 
 export interface OpenTelemetryLikeAttributes {
   readonly [key: string]: string | number | boolean;

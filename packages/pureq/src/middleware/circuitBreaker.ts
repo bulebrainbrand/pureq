@@ -1,5 +1,5 @@
-import type { Middleware, RequestConfig } from "../types/http";
-import type { HttpResponse } from "../response/response";
+import type { Middleware, RequestConfig } from "../types/http.js";
+import type { HttpResponse } from "../response/response.js";
 
 export class PureqCircuitOpenError extends Error {
   readonly code = "PUREQ_CIRCUIT_OPEN";

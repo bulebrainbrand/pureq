@@ -5,7 +5,7 @@ import type {
   AuthRouteHandlerRecipeOptions,
   AuthServerActionRecipe,
   AuthServerActionResult,
-} from "../shared";
+} from "../shared/index.js";
 
 function isErrorWithCode(value: unknown): value is { readonly code: string; readonly message?: string } {
   return typeof value === "object" && value !== null && typeof (value as { readonly code?: unknown }).code === "string";
@@ -149,4 +149,4 @@ export type {
   AuthServerActionRecipe,
   AuthServerActionResult,
   AuthServerActionSuccess,
-} from "../shared";
+} from "../shared/index.js";

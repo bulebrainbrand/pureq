@@ -4,9 +4,9 @@ import type {
   AuthAccount,
   AuthPersistedSession,
   AuthVerificationToken,
-} from "../shared";
-export { probeAdapterCapabilities, assessAdapterReadiness } from "./capabilities";
-export type { AdapterCapabilityReport, AdapterReadinessOptions, AdapterReadinessReport } from "./capabilities";
+} from "../shared/index.js";
+export { probeAdapterCapabilities, assessAdapterReadiness } from "./capabilities.js";
+export type { AdapterCapabilityReport, AdapterReadinessOptions, AdapterReadinessReport } from "./capabilities.js";
 export {
   createMySqlAdapter,
   createMySqlExecutor,
@@ -14,7 +14,7 @@ export {
   createPostgresExecutor,
   createSqlAdapter,
   getSqlSchemaStatements,
-} from "./sql";
+} from "./sql.js";
 export type {
   MySqlClientLike,
   PostgresClientLike,
@@ -24,7 +24,7 @@ export type {
   SqlRow,
   SqlValue,
   TableNames,
-} from "./sql";
+} from "./sql.js";
 
 /**
  * In-memory database adapter for testing and development.
@@ -164,4 +164,4 @@ export function createInMemoryAdapter(): AuthDatabaseAdapter {
   };
 }
 
-export type { AuthDatabaseAdapter, AuthUser, AuthAccount, AuthPersistedSession, AuthVerificationToken } from "../shared";
+export type { AuthDatabaseAdapter, AuthUser, AuthAccount, AuthPersistedSession, AuthVerificationToken } from "../shared/index.js";

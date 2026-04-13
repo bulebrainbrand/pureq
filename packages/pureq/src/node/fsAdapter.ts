@@ -1,6 +1,6 @@
 import { writeFile, readFile, unlink, readdir, mkdir } from "node:fs/promises";
 import { join } from "node:path";
-import type { OfflineQueueStorageAdapter, QueuedRequest } from "../middleware/offlineQueue";
+import type { OfflineQueueStorageAdapter, QueuedRequest } from "../middleware/offlineQueue.js";
 
 /**
  * Node.js specific FileSystem storage for the offline queue.

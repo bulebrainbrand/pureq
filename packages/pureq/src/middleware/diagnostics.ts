@@ -1,6 +1,6 @@
-import type { Middleware, RequestConfig } from "../types/http";
-import { toPureqError } from "../types/result";
-import type { PolicyTraceEntry, TransportEvent } from "../types/events";
+import type { Middleware, RequestConfig } from "../types/http.js";
+import { toPureqError } from "../types/result.js";
+import type { PolicyTraceEntry, TransportEvent } from "../types/events.js";
 
 export type DiagnosticEvent = TransportEvent & {
   readonly method: RequestConfig["method"];

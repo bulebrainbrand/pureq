@@ -1,4 +1,4 @@
-import type { DiagnosticEvent } from "./diagnostics";
+import type { DiagnosticEvent } from "./diagnostics.js";
 
 export interface DiagnosticsExporter {
   readonly export: (event: DiagnosticEvent) => void;

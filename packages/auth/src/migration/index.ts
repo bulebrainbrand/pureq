@@ -1,4 +1,4 @@
-import type { AuthSessionManager, AuthSessionState, AuthStore, AuthTokens } from "../shared";
+import type { AuthSessionManager, AuthSessionState, AuthStore, AuthTokens } from "../shared/index.js";
 
 export interface AuthLegacyTokenSnapshot {
   readonly accessToken?: string | null;

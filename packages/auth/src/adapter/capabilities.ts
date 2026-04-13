@@ -1,4 +1,4 @@
-import type { AuthDatabaseAdapter } from "../shared";
+import type { AuthDatabaseAdapter } from "../shared/index.js";
 
 export interface AdapterCapabilityReport {
   readonly hasCoreUserMethods: boolean;

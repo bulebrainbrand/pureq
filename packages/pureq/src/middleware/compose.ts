@@ -1,8 +1,8 @@
-import type { Middleware } from "../types/http";
-import type { InternalRequestConfig } from "../types/internal";
-import { INTERNAL_MIDDLEWARES } from "../types/internal";
-import type { HttpResponse } from "../response/response";
-import { execute } from "../executor/execute";
+import type { Middleware } from "../types/http.js";
+import type { InternalRequestConfig } from "../types/internal.js";
+import { INTERNAL_MIDDLEWARES } from "../types/internal.js";
+import type { HttpResponse } from "../response/response.js";
+import { execute } from "../executor/execute.js";
 
 /**
  * Composes multiple middlewares into a single executable function.

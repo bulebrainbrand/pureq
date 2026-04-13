@@ -5,8 +5,8 @@ import type {
   AuthRevocationGuardOptions,
   AuthRevocationRegistry,
   AuthRevocationRegistryBackend,
-} from "../shared";
-import { createAuthError } from "../shared";
+} from "../shared/index.js";
+import { createAuthError } from "../shared/index.js";
 
 type RevocationBucket = Map<string, number | null>;
 

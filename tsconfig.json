@@ -21,6 +21,7 @@
   "include": [],
   "references": [
     { "path": "./packages/pureq" },
-    { "path": "./packages/auth" }
+    { "path": "./packages/auth" },
+    { "path": "./packages/validation" }
   ]
 }

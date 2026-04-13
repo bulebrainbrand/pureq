@@ -1,4 +1,4 @@
-import type { AuthStore } from "../shared";
+import type { AuthStore } from "../shared/index.js";
 
 function getGlobalStorage(kind: "localStorage" | "sessionStorage"): Storage | null {
   try {

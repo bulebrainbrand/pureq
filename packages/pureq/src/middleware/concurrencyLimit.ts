@@ -1,5 +1,5 @@
-import type { Middleware, RequestConfig } from "../types/http";
-import { markPolicyMiddleware } from "../policy/guardrails";
+import type { Middleware, RequestConfig } from "../types/http.js";
+import { markPolicyMiddleware } from "../policy/guardrails.js";
 
 export interface ConcurrencyLimitOptions {
   readonly maxConcurrent: number;

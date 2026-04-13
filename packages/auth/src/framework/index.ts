@@ -4,15 +4,15 @@ import type {
   AuthSessionState,
   AuthSessionTransferPayload,
   AuthTokens,
-} from "../shared";
-import { createAuthRequestAdapter } from "../adapters";
-export { createAuthRouteHandlerRecipe, createAuthServerActionRecipe, mapAuthErrorToHttp } from "./recipes";
+} from "../shared/index.js";
+import { createAuthRequestAdapter } from "../adapters/index.js";
+export { createAuthRouteHandlerRecipe, createAuthServerActionRecipe, mapAuthErrorToHttp } from "./recipes.js";
 export {
   createExpressAuthKitPack,
   createFastifyAuthKitPack,
   createNextAuthKitPack,
   createReactAuthKitBootstrapPack,
-} from "./packs";
+} from "./packs.js";
 
 function emptyState(): AuthSessionState {
   return { accessToken: null, refreshToken: null };
@@ -95,4 +95,4 @@ export async function createAuthFrameworkContext(
   };
 }
 
-export type { AuthFrameworkContext, AuthFrameworkContextOptions } from "../shared";
+export type { AuthFrameworkContext, AuthFrameworkContextOptions } from "../shared/index.js";

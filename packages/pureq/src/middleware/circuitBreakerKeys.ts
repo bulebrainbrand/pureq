@@ -1,4 +1,4 @@
-import type { RequestConfig } from "../types/http";
+import type { RequestConfig } from "../types/http.js";
 
 function safeURL(url: string): URL | undefined {
   try {

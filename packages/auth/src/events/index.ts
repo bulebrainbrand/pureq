@@ -1,4 +1,4 @@
-import type { AuthSessionEvent, AuthSessionEventListener } from "../shared";
+import type { AuthSessionEvent, AuthSessionEventListener } from "../shared/index.js";
 
 type AuthSessionTypedEvent<T extends AuthSessionEvent["type"]> = AuthSessionEvent & {
   readonly type: T;

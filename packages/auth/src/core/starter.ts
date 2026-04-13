@@ -12,15 +12,15 @@ import type {
   ReactUseSyncExternalStore,
   VueAuthSessionComposable,
   VueRuntimeBindings,
-} from "../shared";
-import { assessAdapterReadiness } from "../adapter";
-import type { AdapterReadinessReport } from "../adapter";
-import { createAuthRequestAdapter } from "../adapters";
-import { createAuthFrameworkContext } from "../framework";
-import { createAuthRouteHandlerRecipe, createAuthServerActionRecipe } from "../framework/recipes";
-import { createAuthError } from "../shared";
-import { authMemoryStore } from "../storage";
-import { createAuthKit } from "./kit";
+} from "../shared/index.js";
+import { assessAdapterReadiness } from "../adapter/index.js";
+import type { AdapterReadinessReport } from "../adapter/index.js";
+import { createAuthRequestAdapter } from "../adapters/index.js";
+import { createAuthFrameworkContext } from "../framework/index.js";
+import { createAuthRouteHandlerRecipe, createAuthServerActionRecipe } from "../framework/recipes.js";
+import { createAuthError } from "../shared/index.js";
+import { authMemoryStore } from "../storage/index.js";
+import { createAuthKit } from "./kit.js";
 
 function mergeSessionStoreOptions(
   base: AuthSessionStoreOptions | undefined,

@@ -1,9 +1,9 @@
-import type { Middleware } from "../types/http";
-import { circuitBreaker, type CircuitBreakerOptions } from "./circuitBreaker";
-import { dedupe, type DedupeOptions } from "./dedupe";
-import { retry, type RetryOptions } from "./retry";
-import { idempotencyKey, type IdempotencyKeyOptions } from "./idempotencyKey";
-import { defaultTimeout } from "./defaultTimeout";
+import type { Middleware } from "../types/http.js";
+import { circuitBreaker, type CircuitBreakerOptions } from "./circuitBreaker.js";
+import { dedupe, type DedupeOptions } from "./dedupe.js";
+import { retry, type RetryOptions } from "./retry.js";
+import { idempotencyKey, type IdempotencyKeyOptions } from "./idempotencyKey.js";
+import { defaultTimeout } from "./defaultTimeout.js";
 
 export interface ResilientPresetOptions {
   readonly dedupe?: false | DedupeOptions;

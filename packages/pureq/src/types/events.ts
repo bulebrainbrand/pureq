@@ -1,5 +1,5 @@
-import type { RequestConfig } from "./http";
-import type { PureqErrorKind } from "./result";
+import type { RequestConfig } from "./http.js";
+import type { PureqErrorKind } from "./result.js";
 
 export type TransportEventPhase = "start" | "success" | "error";
 

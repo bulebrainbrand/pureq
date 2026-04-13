@@ -6,8 +6,8 @@ import type {
   MultiTenantAuthTemplatePackOptions,
   SingleTenantAuthTemplate,
   SingleTenantAuthTemplateOptions,
-} from "../shared";
-import { createAuthPreset } from "../presets";
+} from "../shared/index.js";
+import { createAuthPreset } from "../presets/index.js";
 
 const singleTenantThreatModel = {
   summary: "Single-tenant web app with cookie-backed session bootstrap and explicit auth middleware composition.",
@@ -182,4 +182,4 @@ export type {
   MultiTenantAuthTemplatePackOptions,
   SingleTenantAuthTemplate,
   SingleTenantAuthTemplateOptions,
-} from "../shared";
+} from "../shared/index.js";

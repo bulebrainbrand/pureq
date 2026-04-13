@@ -1,4 +1,4 @@
-import type { BodySerializer } from "../types/http";
+import type { BodySerializer } from "../types/http.js";
 
 export interface FormUrlEncodedSerializerOptions {
   readonly arrayMode?: "repeat" | "comma";

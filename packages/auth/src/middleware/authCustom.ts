@@ -1,8 +1,8 @@
 import type { Middleware } from "@pureq/pureq";
 import { markPolicyMiddleware } from "@pureq/pureq";
-import type { AuthCustomOptions } from "../shared";
-import { appendQueryParam, resolveStringValue } from "../shared";
-import { mergeHeaders } from "./common";
+import type { AuthCustomOptions } from "../shared/index.js";
+import { appendQueryParam, resolveStringValue } from "../shared/index.js";
+import { mergeHeaders } from "./common.js";
 
 export function authCustom(options: AuthCustomOptions): Middleware {
   const middleware: Middleware = async (req, next) => {

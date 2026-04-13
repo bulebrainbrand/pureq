@@ -1,6 +1,6 @@
-import type { Middleware, RequestConfig } from "../types/http";
-import type { HttpResponse } from "../response/response";
-import { appendPolicyTrace, deepCopyMeta } from "../utils/policyTrace";
+import type { Middleware, RequestConfig } from "../types/http.js";
+import type { HttpResponse } from "../response/response.js";
+import { appendPolicyTrace, deepCopyMeta } from "../utils/policyTrace.js";
 
 export interface HedgeOptions {
   readonly hedgeAfterMs: number;

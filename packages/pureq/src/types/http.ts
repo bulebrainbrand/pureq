@@ -1,4 +1,4 @@
-import type { HttpResponse } from "../response/response";
+import type { HttpResponse } from "../response/response.js";
 
 /**
  * Standard HTTP methods supported by the library

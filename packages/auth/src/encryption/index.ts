@@ -1,4 +1,4 @@
-import type { AuthEncryption, AuthEncryptionOptions } from "../shared";
+import type { AuthEncryption, AuthEncryptionOptions } from "../shared/index.js";
 
 const MIN_SECRET_BYTES = 32;
 const DEFAULT_PBKDF2_ITERATIONS = 100_000;
@@ -119,4 +119,4 @@ export function createAuthEncryption(secret: string, options: AuthEncryptionOpti
   };
 }
 
-export type { AuthEncryption } from "../shared";
+export type { AuthEncryption } from "../shared/index.js";

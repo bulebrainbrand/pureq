@@ -1,6 +1,6 @@
 import type { Middleware } from "@pureq/pureq";
 import { markPolicyMiddleware } from "@pureq/pureq";
-import type { BroadcastSyncOptions } from "../shared";
+import type { BroadcastSyncOptions } from "../shared/index.js";
 
 /** DX-L1: BroadcastSync with dispose support. */
 export function withBroadcastSync(options: BroadcastSyncOptions): Middleware & { dispose(): void } {

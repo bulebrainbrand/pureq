@@ -1,4 +1,4 @@
-import type { OfflineQueueStorageAdapter, QueuedRequest } from "../../middleware/offlineQueue";
+import type { OfflineQueueStorageAdapter, QueuedRequest } from "../../middleware/offlineQueue.js";
 
 /**
  * Standard IndexedDB-based storage for the offline queue.

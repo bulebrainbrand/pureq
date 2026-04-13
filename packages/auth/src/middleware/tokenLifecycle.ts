@@ -1,8 +1,8 @@
 import type { Middleware } from "@pureq/pureq";
 import { markPolicyMiddleware } from "@pureq/pureq";
-import type { TokenLifecycleOptions } from "../shared";
-import { buildAuthError } from "../shared";
-import { decodeJwt } from "../jwt";
+import type { TokenLifecycleOptions } from "../shared/index.js";
+import { buildAuthError } from "../shared/index.js";
+import { decodeJwt } from "../jwt/index.js";
 
 export function withTokenLifecycle(options: TokenLifecycleOptions): Middleware {
   const refreshThresholdMs = options.refreshThresholdMs ?? 5 * 60_000;

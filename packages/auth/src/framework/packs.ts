@@ -1,4 +1,4 @@
-import type { AuthKit, ReactAuthHooks, ReactUseSyncExternalStore } from "../shared";
+import type { AuthKit, ReactAuthHooks, ReactUseSyncExternalStore } from "../shared/index.js";
 
 type RouteRequestLike = {
   readonly method?: string;

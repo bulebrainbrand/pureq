@@ -1,5 +1,5 @@
-import { parseOIDCCallbackParams } from "../oidc";
-import { createAuthError } from "../shared";
+import { parseOIDCCallbackParams } from "../oidc/index.js";
+import { createAuthError } from "../shared/index.js";
 
 export interface ProviderCallbackContractInput {
   readonly provider: string;

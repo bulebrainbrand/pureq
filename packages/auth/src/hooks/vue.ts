@@ -3,7 +3,7 @@ import type {
   VueAuthSessionComposable,
   VueRefLike,
   VueRuntimeBindings,
-} from "../shared";
+} from "../shared/index.js";
 
 export function createVueAuthSessionComposable(
   sessionStore: AuthSessionStore,
@@ -47,4 +47,4 @@ export function createVueAuthSessionComposable(
   };
 }
 
-export type { VueAuthSessionComposable, VueRuntimeBindings } from "../shared";
+export type { VueAuthSessionComposable, VueRuntimeBindings } from "../shared/index.js";

@@ -1,8 +1,8 @@
-import type { Middleware, RequestConfig } from "../types/http";
-import type { HttpResponse } from "../response/response";
-import { resolveStalePolicy } from "./stalePolicy";
-import { stableKeyValues, stableQuery } from "../utils/stableKey";
-import { appendPolicyTrace } from "../utils/policyTrace";
+import type { Middleware, RequestConfig } from "../types/http.js";
+import type { HttpResponse } from "../response/response.js";
+import { resolveStalePolicy } from "./stalePolicy.js";
+import { stableKeyValues, stableQuery } from "../utils/stableKey.js";
+import { appendPolicyTrace } from "../utils/policyTrace.js";
 
 export interface HttpCacheOptions {
   readonly ttlMs: number;

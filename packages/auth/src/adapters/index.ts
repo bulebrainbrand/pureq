@@ -6,8 +6,8 @@ import type {
   AuthSessionManager,
   AuthSessionState,
   AuthStore,
-} from "../shared";
-import { createAuthPreset } from "../presets";
+} from "../shared/index.js";
+import { createAuthPreset } from "../presets/index.js";
 
 function appendSetCookieHeaders(headers: Headers, values: readonly string[]): void {
   for (const value of values) {
@@ -57,4 +57,4 @@ export function createAuthRequestAdapter(options: AuthRequestAdapterOptions = {}
   };
 }
 
-export type { AuthBridge, AuthPreset, AuthRequestAdapter, AuthRequestAdapterOptions, AuthSessionManager, AuthSessionState, AuthStore } from "../shared";
+export type { AuthBridge, AuthPreset, AuthRequestAdapter, AuthRequestAdapterOptions, AuthSessionManager, AuthSessionState, AuthStore } from "../shared/index.js";

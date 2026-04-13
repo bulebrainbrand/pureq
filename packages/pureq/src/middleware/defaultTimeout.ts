@@ -1,5 +1,5 @@
-import type { Middleware } from "../types/http";
-import { markPolicyMiddleware } from "../policy/guardrails";
+import type { Middleware } from "../types/http.js";
+import { markPolicyMiddleware } from "../policy/guardrails.js";
 
 /**
  * Applies a default timeout when a request does not explicitly specify one.

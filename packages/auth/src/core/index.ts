@@ -8,12 +8,12 @@ import type {
   AuthRouteHandlers,
   AuthSessionState,
   AuthUser,
-} from "../shared";
+} from "../shared/index.js";
 import { generateSecureId } from "@pureq/pureq";
-import { createAuthPreset } from "../presets";
-import { createAuthBridge } from "../bridge";
-import { createAuthDebugLogger } from "../debug";
-import { createAuthError } from "../shared";
+import { createAuthPreset } from "../presets/index.js";
+import { createAuthBridge } from "../bridge/index.js";
+import { createAuthDebugLogger } from "../debug/index.js";
+import { createAuthError } from "../shared/index.js";
 
 const SESSION_TOKEN_PREFIX = "session:";
 const REFRESH_TOKEN_PREFIX = "refresh:";
@@ -632,8 +632,8 @@ export function createAuth(config: AuthConfig = {}): AuthInstance {
   return instance;
 }
 
-export type { AuthConfig, AuthInstance, AuthRouteHandlers } from "../shared";
-export { createAuthKit } from "./kit";
-export type { AuthKit, AuthKitConfig } from "./kit";
-export { createAuthStarter } from "./starter";
-export type { AuthStarter, AuthStarterConfig } from "./starter";
+export type { AuthConfig, AuthInstance, AuthRouteHandlers } from "../shared/index.js";
+export { createAuthKit } from "./kit.js";
+export type { AuthKit, AuthKitConfig } from "./kit.js";
+export { createAuthStarter } from "./starter.js";
+export type { AuthStarter, AuthStarterConfig } from "./starter.js";

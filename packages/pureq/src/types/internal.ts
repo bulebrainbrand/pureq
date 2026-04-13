@@ -1,5 +1,5 @@
-import type { RequestConfig, Middleware } from "./http";
-import type { HttpResponse } from "../response/response";
+import type { RequestConfig, Middleware } from "./http.js";
+import type { HttpResponse } from "../response/response.js";
 
 /**
  * Internal symbols for hiding implementation details from public API

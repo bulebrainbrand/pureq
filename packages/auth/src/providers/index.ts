@@ -1,11 +1,11 @@
-import type { AuthProvider, AuthCredentialsProviderOptions, AuthEmailProviderOptions, AuthUser } from "../shared";
-export { createTopProviderPreset } from "./presets";
-export { listTopProviderPresets } from "./presets";
-export type { TopProviderPreset, TopProviderPresetOptions } from "./presets";
-export { validateProviderCallbackContract } from "./callbackContracts";
-export type { ProviderCallbackContractInput, ProviderCallbackContractResult } from "./callbackContracts";
-export { normalizeProviderError, PROVIDER_ERROR_NORMALIZATION_TABLE } from "./errors";
-export type { ProviderNormalizedError } from "./errors";
+import type { AuthProvider, AuthCredentialsProviderOptions, AuthEmailProviderOptions, AuthUser } from "../shared/index.js";
+export { createTopProviderPreset } from "./presets.js";
+export { listTopProviderPresets } from "./presets.js";
+export type { TopProviderPreset, TopProviderPresetOptions } from "./presets.js";
+export { validateProviderCallbackContract } from "./callbackContracts.js";
+export type { ProviderCallbackContractInput, ProviderCallbackContractResult } from "./callbackContracts.js";
+export { normalizeProviderError, PROVIDER_ERROR_NORMALIZATION_TABLE } from "./errors.js";
+export type { ProviderNormalizedError } from "./errors.js";
 
 /**
  * FEAT-H3: Credentials-based sign-in provider.
@@ -37,4 +37,4 @@ export function emailProvider(options: AuthEmailProviderOptions): AuthProvider &
   };
 }
 
-export type { AuthProvider, AuthCredentialsProviderOptions, AuthEmailProviderOptions } from "../shared";
+export type { AuthProvider, AuthCredentialsProviderOptions, AuthEmailProviderOptions } from "../shared/index.js";

@@ -1,4 +1,4 @@
-import type { AuthDebugLogger } from "../shared";
+import type { AuthDebugLogger } from "../shared/index.js";
 
 /**
  * FEAT-L1: Debug logger for auth operations.
@@ -23,4 +23,4 @@ export function createAuthDebugLogger(
   };
 }
 
-export type { AuthDebugLogger } from "../shared";
+export type { AuthDebugLogger } from "../shared/index.js";

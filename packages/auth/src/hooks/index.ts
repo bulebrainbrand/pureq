@@ -1,6 +1,6 @@
-import type { AuthSessionManager, AuthSessionState, AuthSessionStatus, AuthSessionStore, AuthSessionStoreOptions } from "../shared";
-export { createReactAuthHooks } from "./react";
-export { createVueAuthSessionComposable } from "./vue";
+import type { AuthSessionManager, AuthSessionState, AuthSessionStatus, AuthSessionStore, AuthSessionStoreOptions } from "../shared/index.js";
+export { createReactAuthHooks } from "./react.js";
+export { createVueAuthSessionComposable } from "./vue.js";
 
 function emptyState(): AuthSessionState {
   return {
@@ -117,4 +117,4 @@ export function createAuthSessionStore(
   };
 }
 
-export type { AuthSessionStore, AuthSessionStoreOptions } from "../shared";
+export type { AuthSessionStore, AuthSessionStoreOptions } from "../shared/index.js";

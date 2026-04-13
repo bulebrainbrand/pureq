@@ -49,6 +49,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Dist import smoke (Node ESM)
+        run: |
+          node --input-type=module -e "import './packages/pureq/dist/index.js'; console.log('pureq-ok')"
+          node --input-type=module -e "import './packages/pureq/dist/node/index.js'; console.log('pureq-node-ok')"
+          node --input-type=module -e "import './packages/auth/dist/index.js'; console.log('auth-ok')"
+          node --input-type=module -e "import './packages/validation/dist/index.js'; console.log('validation-ok')"
+
   browser-runtime:
     runs-on: ubuntu-latest
     steps:

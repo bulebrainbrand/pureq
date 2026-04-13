@@ -4,7 +4,7 @@
  * identical requests always map to the same cache/dedupe slot.
  */
 
-import type { QueryParams } from "../types/http";
+import type { QueryParams } from "../types/http.js";
 
 /**
  * Returns a deterministic string from a record of key-value pairs,

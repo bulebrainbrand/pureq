@@ -1,6 +1,6 @@
-import type { TransportEvent } from "../types/events";
-import type { OpenTelemetryLikeAttributes } from "./otelMapping";
-import { mapTransportEventToOtelAttributes } from "./otelMapping";
+import type { TransportEvent } from "../types/events.js";
+import type { OpenTelemetryLikeAttributes } from "./otelMapping.js";
+import { mapTransportEventToOtelAttributes } from "./otelMapping.js";
 
 /**
  * Maps a transport event to standard HTTP OpenTelemetry semantic conventions.

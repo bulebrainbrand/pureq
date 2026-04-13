@@ -6,6 +6,7 @@ This repository contains:
 
 - a functional, immutable, and type-safe HTTP transport core
 - an explicit, framework-neutral authentication and session layer
+- a policy-aware validation layer for structured parsing, guardrails, and redaction
 
 ## Core Philosophy
 
@@ -58,6 +59,24 @@ Docs:
 - [Package README](https://github.com/shiro-shihi/pureq/blob/main/packages/auth/README.md)
 - [Package Docs Index](https://github.com/shiro-shihi/pureq/blob/main/packages/auth/docs/README.md)
 
+### @pureq/validation
+
+Policy-aware validation and serialization primitives for explicit data contracts.
+
+Main characteristics:
+
+- zero-throw `Result`-based parsing
+- policy metadata propagation through `ValidationResult`
+- RFC 6901 JSON Pointer paths for field-level policy maps
+- guardrail chaining with sync and async support
+- policy-aware redaction and scope-based output control
+
+Docs:
+
+- [Package README](https://github.com/shiro-shihi/pureq/blob/main/packages/validation/README.md)
+- [Implementation Plan](https://github.com/shiro-shihi/pureq/blob/main/packages/validation/docs/Implementation_plan.md)
+- [Release Notes](https://github.com/shiro-shihi/pureq/blob/main/packages/validation/docs/release-notes-v0.1.0-draft.md)
+
 ## Why pureq
 
 pureq is aimed at teams that want:
@@ -96,6 +115,8 @@ const starter = await createAuthStarter({
 - [Transport Docs](https://github.com/shiro-shihi/pureq/blob/main/packages/pureq/docs/README.md)
 - [Auth Docs](https://github.com/shiro-shihi/pureq/blob/main/packages/auth/docs/README.md)
 - [Auth Implementation Plan](https://github.com/shiro-shihi/pureq/blob/main/packages/auth/plan.md)
+- [Validation README](https://github.com/shiro-shihi/pureq/blob/main/packages/validation/README.md)
+- [Validation Release Notes](https://github.com/shiro-shihi/pureq/blob/main/packages/validation/docs/release-notes-v0.1.0-draft.md)
 
 ## Installation
 
@@ -104,6 +125,7 @@ Install the package you need:
 ```bash
 pnpm add @pureq/pureq
 pnpm add @pureq/auth
+pnpm add @pureq/validation
 ```
 
 ## License

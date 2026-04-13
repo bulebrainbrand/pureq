@@ -1,6 +1,6 @@
-import { oidcProviders } from "../oidc/providers";
-import { createAuthError } from "../shared";
-import type { OIDCProviderDefinition } from "../shared";
+import { oidcProviders } from "../oidc/providers.js";
+import { createAuthError } from "../shared/index.js";
+import type { OIDCProviderDefinition } from "../shared/index.js";
 
 const TOP_PROVIDER_PRESETS = [
   "google",

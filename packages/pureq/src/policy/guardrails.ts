@@ -1,4 +1,4 @@
-import type { Middleware } from "../types/http";
+import type { Middleware } from "../types/http.js";
 
 export interface PolicyMetadata {
   readonly name: string;

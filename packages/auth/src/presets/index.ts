@@ -1,7 +1,7 @@
-import type { AuthBridge, AuthBridgeCookieOptions, AuthSessionManager, AuthSessionManagerOptions, AuthStore } from "../shared";
-import { authMemoryStore } from "../storage";
-import { createAuthBridge } from "../bridge";
-import { createAuthSessionManager } from "../session";
+import type { AuthBridge, AuthBridgeCookieOptions, AuthSessionManager, AuthSessionManagerOptions, AuthStore } from "../shared/index.js";
+import { authMemoryStore } from "../storage/index.js";
+import { createAuthBridge } from "../bridge/index.js";
+import { createAuthSessionManager } from "../session/index.js";
 
 export interface AuthPresetOptions {
   readonly storage?: AuthStore;

@@ -7,8 +7,8 @@ import type {
   AuthStore,
   AuthTokenRotationPolicy,
   AuthTokens,
-} from "../shared";
-import { decodeJwt } from "../jwt";
+} from "../shared/index.js";
+import { decodeJwt } from "../jwt/index.js";
 
 type SessionBroadcastMessage =
   | {
@@ -411,5 +411,5 @@ export {
   composeSessionEventAudits,
   createConsoleSessionEventAudit,
   createBufferedSessionEventExporter,
-} from "./exporters";
-export type { SessionEventBufferedExporter, SessionEventExporterOptions } from "./exporters";
+} from "./exporters.js";
+export type { SessionEventBufferedExporter, SessionEventExporterOptions } from "./exporters.js";

@@ -1,7 +1,7 @@
-import type { BodySerializer, HttpAdapter, RequestConfig } from "../types/http";
-import { HttpResponse } from "../response/response";
-import { err, ok, toPureqError, type HttpResult } from "../types/result";
-import { jsonBodySerializer } from "../serializers/jsonBodySerializer";
+import type { BodySerializer, HttpAdapter, RequestConfig } from "../types/http.js";
+import { HttpResponse } from "../response/response.js";
+import { err, ok, toPureqError, type HttpResult } from "../types/result.js";
+import { jsonBodySerializer } from "../serializers/jsonBodySerializer.js";
 
 /**
  * Builds the effective URL with path parameter replacement and query string expansion.

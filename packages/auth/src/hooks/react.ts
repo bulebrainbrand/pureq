@@ -1,4 +1,4 @@
-import type { AuthSessionHookResult, AuthSessionStore, ReactAuthHooks, ReactUseSyncExternalStore } from "../shared";
+import type { AuthSessionHookResult, AuthSessionStore, ReactAuthHooks, ReactUseSyncExternalStore } from "../shared/index.js";
 
 /**
  * Create React hooks for auth session state.
@@ -34,4 +34,4 @@ export function createReactAuthHooks(
   };
 }
 
-export type { ReactAuthHooks, ReactUseSyncExternalStore } from "../shared";
+export type { ReactAuthHooks, ReactUseSyncExternalStore } from "../shared/index.js";

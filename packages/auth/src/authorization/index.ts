@@ -1,8 +1,8 @@
 import type { Middleware } from "@pureq/pureq";
 import { markPolicyMiddleware } from "@pureq/pureq";
-import type { AuthAuthorization, AuthAuthorizationOptions, AuthSessionState } from "../shared";
-import { buildAuthError } from "../shared";
-import { decodeJwt } from "../jwt";
+import type { AuthAuthorization, AuthAuthorizationOptions, AuthSessionState } from "../shared/index.js";
+import { buildAuthError } from "../shared/index.js";
+import { decodeJwt } from "../jwt/index.js";
 
 /**
  * FEAT-M1: Create RBAC authorization helpers.
@@ -59,4 +59,4 @@ export function createAuthorization<TRole extends string = string>(
   };
 }
 
-export type { AuthAuthorization, AuthAuthorizationOptions } from "../shared";
+export type { AuthAuthorization, AuthAuthorizationOptions } from "../shared/index.js";

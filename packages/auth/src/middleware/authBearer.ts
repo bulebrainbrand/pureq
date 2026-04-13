@@ -1,8 +1,8 @@
 import type { Middleware } from "@pureq/pureq";
 import { markPolicyMiddleware } from "@pureq/pureq";
-import type { AuthBearerOptions } from "../shared";
-import { buildAuthError } from "../shared";
-import { mergeHeaders } from "./common";
+import type { AuthBearerOptions } from "../shared/index.js";
+import { buildAuthError } from "../shared/index.js";
+import { mergeHeaders } from "./common.js";
 
 const MAX_BEARER_TOKEN_LENGTH = 8192;
 

@@ -1,5 +1,5 @@
-import type { RequestConfig } from "../types/http";
-import type { PolicyTraceEntry } from "../types/events";
+import type { RequestConfig } from "../types/http.js";
+import type { PolicyTraceEntry } from "../types/events.js";
 
 export function appendPolicyTrace(req: RequestConfig, entry: PolicyTraceEntry): void {
   const mutableReq = req as any;

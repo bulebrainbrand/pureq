@@ -1,6 +1,6 @@
-import type { Middleware, QueryParams, RequestConfig } from "../types/http";
-import type { HttpResponse } from "../response/response";
-import { stableKeyValues, stableQuery } from "../utils/stableKey";
+import type { Middleware, QueryParams, RequestConfig } from "../types/http.js";
+import type { HttpResponse } from "../response/response.js";
+import { stableKeyValues, stableQuery } from "../utils/stableKey.js";
 
 export interface DedupeOptions {
   readonly methods?: readonly RequestConfig["method"][];

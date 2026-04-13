@@ -1,4 +1,4 @@
-import type { AuthSessionManager, AuthSessionState } from "../shared";
+import type { AuthSessionManager, AuthSessionState } from "../shared/index.js";
 
 export interface AuthBridgeRequestLike {
   readonly headers?: Headers | Readonly<Record<string, string | null | undefined>>;

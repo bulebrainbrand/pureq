@@ -6,15 +6,15 @@ import type {
   RequestConfig,
   RequestInterceptor,
   ResponseInterceptor,
-} from "../types/http";
-import type { InternalRequestConfig } from "../types/internal";
-import { INTERNAL_MIDDLEWARES } from "../types/internal";
-import type { ExtractParams } from "../utils/url";
-import { compose } from "../middleware/compose";
-import type { HttpResponse } from "../response/response";
-import { execute } from "../executor/execute";
-import { validatePolicyGuardrails } from "../policy/guardrails";
-import { generateSecureId } from "../utils/crypto";
+} from "../types/http.js";
+import type { InternalRequestConfig } from "../types/internal.js";
+import { INTERNAL_MIDDLEWARES } from "../types/internal.js";
+import type { ExtractParams } from "../utils/url.js";
+import { compose } from "../middleware/compose.js";
+import type { HttpResponse } from "../response/response.js";
+import { execute } from "../executor/execute.js";
+import { validatePolicyGuardrails } from "../policy/guardrails.js";
+import { generateSecureId } from "../utils/crypto.js";
 import {
   err,
   httpErrorFromResponse,
@@ -24,12 +24,12 @@ import {
   type PureqError,
   type PureqErrorMetadata,
   type Result,
-} from "../types/result";
+} from "../types/result.js";
 import type {
   TransportErrorEvent,
   TransportStartEvent,
   TransportSuccessEvent,
-} from "../types/events";
+} from "../types/events.js";
 
 type PathParams<Path extends string> = keyof ExtractParams<Path> extends never
   ? { readonly params?: ExtractParams<Path> }

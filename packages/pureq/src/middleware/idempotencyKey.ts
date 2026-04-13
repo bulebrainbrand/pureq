@@ -1,5 +1,5 @@
-import type { Middleware, RequestConfig } from "../types/http";
-import { generateSecureId } from "../utils/crypto";
+import type { Middleware, RequestConfig } from "../types/http.js";
+import { generateSecureId } from "../utils/crypto.js";
 
 export interface IdempotencyKeyOptions {
   readonly methods?: readonly RequestConfig["method"][];

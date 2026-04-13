@@ -1,4 +1,4 @@
-import type { AuthCallbacks } from "../shared";
+import type { AuthCallbacks } from "../shared/index.js";
 
 /**
  * FEAT-H5: Compose multiple callback registrations into one.
@@ -53,4 +53,4 @@ export function composeAuthCallbacks(...callbackSets: readonly Partial<AuthCallb
   };
 }
 
-export type { AuthCallbacks } from "../shared";
+export type { AuthCallbacks } from "../shared/index.js";

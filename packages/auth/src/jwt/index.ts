@@ -1,4 +1,4 @@
-import { base64UrlDecode } from "../shared";
+import { base64UrlDecode } from "../shared/index.js";
 
 function parseSegment<T>(segment: string): T {
   const text = new TextDecoder().decode(base64UrlDecode(segment));
